@@ -2,7 +2,7 @@ from Cocoa import *
 from Foundation import *
 import thread
 
-class LoginWindowController(NSWindowController):
+class LoginWindow(NSWindowController):
   username = objc.IBOutlet()
   password = objc.IBOutlet()
   loginfailed = objc.IBOutlet()

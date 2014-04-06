@@ -14,7 +14,7 @@ class iBugz(NSObject):
   workingCase = 0
 
   def applicationDidFinishLaunching_(self, notification):
-    self.loginWindow = LoginWindowController.alloc().initWithWindowNibName_("LoginWindow")
+    self.loginWindow = LoginWindow.alloc().initWithWindowNibName_("LoginWindow")
     self.loginWindow.registerApi(self)
 
     statusbar = NSStatusBar.systemStatusBar()
