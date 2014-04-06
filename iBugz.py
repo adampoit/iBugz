@@ -12,7 +12,6 @@ class iBugz(NSObject):
   baseurl = "https://fogbugz.logos.com/api.asp?"
   token = ''
   cases = []
-  workingCase = 0
 
   def applicationDidFinishLaunching_(self, notification):
     self.loginWindow = LoginWindow.alloc().initWithWindowNibName_("LoginWindow")
@@ -36,9 +35,13 @@ class iBugz(NSObject):
     self.executeRequest({'cmd':'logon', 'email':username, 'password':password}, self.loginWindow.handleLogin)
 
   def setCurrentFilter(self):
-    self.executeRequest({'cmd':'setCurrentFilter', 'sFilter':'ez', 'token':self.token}, self.fetchCases)
+    self.executeRequest({'cmd':'setCurrentFilter', 'sFilter':'ez', 'token':self.token}, self.getCurrentCase)
+
+  def getCurrentCase(self, response):
+    self.executeRequest({'cmd':'viewPerson', 'token':self.token}, self.fetchCases)
 
   def fetchCases(self, response):
+    self.workingCase = response.response.person.find('ixbugworkingon').string
     self.executeRequest({'cmd':'search', 'cols':'sTitle', 'token':self.token}, self.updateCases)
 
   def updateCases(self, response):

@@ -13,7 +13,6 @@ class CaseMenu(NSMenu):
     self.addItem_(menuitem)
 
   def updateMenu(self):
-    print "update menu"
     self.removeAllItems()
     for case in self.api.cases:
         menuitem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_(case.stitle.string, 'selectCase:', '')
