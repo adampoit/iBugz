@@ -23,12 +23,7 @@ class LoginWindow(NSWindowController):
     self.loginbutton.setHidden_(True)
     self.api.login(self.username._.stringValue, self.password._.stringValue)
 
-  def handleLogin(self, response):
+  def handleLogin(self):
     self.spinindicator.setHidden_(True)
     self.loginbutton.setHidden_(False)
-    if (response.response.token == None):
-      self.loginfailed.setHidden_(False)
-    else:
-      self.api.token = response.response.token.string
-      self.api.setCurrentFilter()
-      self.close()
+    self.loginfailed.setHidden_(False)
