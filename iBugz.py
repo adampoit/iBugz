@@ -65,7 +65,8 @@ class iBugz(NSObject):
     with self.lock:
       self.casesToRemove = list(set(self.cases) - set(newCases))
       self.cases = newCases
-      AppHelper.callAfter(self.menu.updateMenu)
+
+    AppHelper.callAfter(self.menu.updateMenu)
 
   def selectCase_(self, notification):
     casenum = notification._.representedObject.get('ixbug')
@@ -73,14 +74,16 @@ class iBugz(NSObject):
 
     with self.lock:
       self.workingCase = casenum
-      self.menu.updateMenu()
+
+    self.menu.updateMenu()
 
   def stopWork_(self, notification):
     self.executeRequest({'cmd':'stopWork', 'token':self.token}, None)
 
     with self.lock:
       self.workingCase = 0
-      self.menu.updateMenu()
+
+    self.menu.updateMenu()
 
   def executeRequest(self, data, callback, repeatEvery=0):
     thread.start_new_thread(self.executeRequestCore, (data, callback, repeatEvery))
