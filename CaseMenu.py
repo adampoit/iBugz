@@ -19,6 +19,8 @@ class CaseMenu(NSMenu):
     self.removeItem_(self.itemWithTitle_('Login'))
     menuitem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Stop Work', 'stopWork:', '')
     self.insertItem_atIndex_(menuitem, 0)
+    menuitem = NSMenuItem.separatorItem()
+    self.insertItem_atIndex_(menuitem, 0)
 
     self.update()
 
