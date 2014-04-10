@@ -3,21 +3,24 @@ from Foundation import *
 from LoginWindow import *
 
 class CaseMenu(NSMenu):
-  thisTime = False
-
   def registerApi(self, api):
     self.api = api
 
   def initialDisplay(self):
+    self.removeAllItems()
     menuitem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Login', 'showLogin:', '')
     self.addItem_(menuitem)
     menuitem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Quit', 'terminate:', '')
     self.addItem_(menuitem)
 
+    self.update()
+
   def hideLogin(self):
     self.removeItem_(self.itemWithTitle_('Login'))
     menuitem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Stop Work', 'stopWork:', '')
     self.insertItem_atIndex_(menuitem, 0)
+
+    self.update()
 
   def updateMenu(self):
     with self.api.lock:

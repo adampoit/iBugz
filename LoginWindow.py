@@ -15,6 +15,10 @@ class LoginWindow(NSWindowController):
   def windowDidLoad(self):
     NSWindowController.windowDidLoad(self)
 
+  def showWindow(self):
+    self.showWindow_(self)
+    self._.window.setLevel_(NSMainMenuWindowLevel)
+
   @objc.IBAction
   def login_(self, sender):
     self.loginfailed.setHidden_(True)
@@ -23,7 +27,7 @@ class LoginWindow(NSWindowController):
     self.loginbutton.setHidden_(True)
     self.api.login(self.username._.stringValue, self.password._.stringValue)
 
-  def handleLogin(self):
+  def handleLoginFailure(self):
     self.spinindicator.setHidden_(True)
     self.loginbutton.setHidden_(False)
     self.loginfailed.setHidden_(False)
