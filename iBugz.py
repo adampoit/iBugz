@@ -10,8 +10,11 @@ from CaseMenu import *
 import time
 from Quartz.CoreGraphics import *
 
+NX_ALLEVENTS = int(4294967295)
+
 class iBugz(NSObject):
   baseurl = "https://fogbugz.logos.com/api.asp?"
+  secondsToIdle = 300
   cases = []
   casesToRemove = []
 
@@ -78,6 +81,10 @@ class iBugz(NSObject):
     with self.lock:
       self.casesToRemove = list(set(self.cases) - set(newCases))
       self.cases = newCases
+      idle = CGEventSourceSecondsSinceLastEventType(1, NX_ALLEVENTS) > self.secondsToIdle and self.workingCase != 0
+
+    if (idle):
+      self.stopWork_(self)
 
     AppHelper.callAfter(self.menu.updateMenu)
 
