@@ -41,7 +41,7 @@ class iBugz(NSObject):
     self.lock = thread.allocate_lock()
 
   def initialDisplay(self):
-    self.menu.initialDisplay()
+    AppHelper.callAfter(self.menu.initialDisplay)
     AppHelper.callAfter(self.loginWindow.showWindow)
 
   def showLogin_(self, notification):

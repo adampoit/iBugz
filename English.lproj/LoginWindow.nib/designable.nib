@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="LoginWindow">
             <connections>
-                <outlet property="loginbutton" destination="SUu-cW-czA" id="iQt-iB-cey"/>
-                <outlet property="loginfailed" destination="VQz-pT-1Uj" id="JVd-6F-M7v"/>
-                <outlet property="password" destination="CJc-5C-5Q8" id="qFC-tA-qPO"/>
+                <outlet property="loginbutton" destination="SUu-cW-czA" id="f2d-RJ-EiV"/>
+                <outlet property="loginfailed" destination="VQz-pT-1Uj" id="1a1-DF-xSe"/>
+                <outlet property="password" destination="CJc-5C-5Q8" id="Z3G-98-8pk"/>
                 <outlet property="spinindicator" destination="fGG-Bj-5IJ" id="gKV-0M-E56"/>
                 <outlet property="username" destination="LHq-OO-ThE" id="NMq-jK-0T9"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="M8P-iV-IQL"/>
@@ -37,7 +37,7 @@
                     <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJc-5C-5Q8">
                         <rect key="frame" x="146" y="64" width="130" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="AM4-5h-jHj">
+                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="AM4-5h-jHj">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -45,6 +45,9 @@
                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                             </allowedInputSourceLocales>
                         </secureTextFieldCell>
+                        <connections>
+                            <action selector="login:" target="-2" id="AHT-05-rGX"/>
+                        </connections>
                     </secureTextField>
                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="uhH-cF-duz">
                         <rect key="frame" x="12" y="47" width="272" height="5"/>
@@ -79,7 +82,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="login:" target="-2" id="q7r-Ww-RYG"/>
+                            <action selector="login:" target="-2" id="X5Q-eu-fSd"/>
                         </connections>
                     </button>
                     <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQz-pT-1Uj">

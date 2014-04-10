@@ -14,6 +14,8 @@ class LoginWindow(NSWindowController):
 
   def windowDidLoad(self):
     NSWindowController.windowDidLoad(self)
+    self._.window.center()
+    self._.window.setTitle_("Login")
 
   def showWindow(self):
     self.showWindow_(self)
